@@ -10,7 +10,8 @@ module.exports = {
       'light',
       {
         dark: {
-          ...require('daisyui/src/colors/themes')['[data-theme=cyberpunk]'],
+          ...require('daisyui/src/colors/themes')['[data-theme=dracula]'],
+          '--rounded-btn': '0.35rem', // border radius rounded-btn utility class, used in buttons and similar element
         },
       },
     ],

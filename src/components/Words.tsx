@@ -10,14 +10,17 @@ const Words = ({ value }: WordsProps) => {
 
   const word = getRandomWord();
 
+  console.log(value);
+
   return (
-    <div className='grid gap-2 place-content-center'>
-      <Word value='' done={false} />
-      <Word value='' done={false} />
-      <Word value='' done={false} />
-      <Word value='' done={false} />
-      <Word value='' done={false} />
-      <Word value='' done={false} />
+    <div className='grid gap-1.5 place-content-center'>
+      {guesses.map((word, index) => (
+        <Word value={word} done={true} key={index + '-' + word} />
+      ))}
+      <Word value={value} done={false} />
+      {[...Array(5 - guesses.length)].map((_, index) => (
+        <Word value='' done={false} key={index} />
+      ))}
     </div>
   );
 };

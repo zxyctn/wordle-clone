@@ -4,22 +4,54 @@ const Keyboard = () => {
   const rows = [
     'QWERTYUIOP'.split(''),
     'ASDFGHJKL'.split(''),
-    ['ENTER', ...'ZXCVBNM'.split(''), '<-'],
+    ['ENTER', ...'ZXCVBNM'.split(''), 'DELETE'],
   ];
 
   return (
-    <div className='my-5 grid gap-1'>
-      {rows.map((row) => (
+    <div className='my-5 grid gap-1 max-w-screen-sm mx-auto'>
+      {rows.map((row, index) => (
         <div
           key={row.toString()}
-          className={`gap-1 mx-auto flex w-screen justify-center`}
+          className={`gap-1 mx-auto flex justify-center px-2 ${
+            index !== 1 ? 'w-full' : 'w-11/12'
+          }`}
         >
           {...row.map((letter) => (
             <button
               key={letter}
-              className='btn text-xl shrink content-center py-10 px-2 w-10 min-w-max'
+              className='font-bold text-xl btn grow content-center min-w-0 w-0 py-8 px-0'
             >
-              {letter.toUpperCase()}
+              {letter === 'ENTER' ? (
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='16'
+                  height='16'
+                  fill='currentColor'
+                  className='bi bi-arrow-return-left'
+                  viewBox='0 0 16 16'
+                >
+                  <path
+                    fillRule='evenodd'
+                    d='M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z'
+                  />
+                </svg>
+              ) : letter === 'DELETE' ? (
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='16'
+                  height='16'
+                  fill='currentColor'
+                  className='bi bi-arrow-left'
+                  viewBox='0 0 16 16'
+                >
+                  <path
+                    fillRule='evenodd'
+                    d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'
+                  />
+                </svg>
+              ) : (
+                letter.toUpperCase()
+              )}
             </button>
           ))}
         </div>

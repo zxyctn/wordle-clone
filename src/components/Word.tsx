@@ -7,12 +7,13 @@ interface WordProps {
 
 const Word = ({ value, done }: WordProps) => {
   return (
-    <div className='flex gap-2'>
-      <Letter value='' type='' />
-      <Letter value='' type='' />
-      <Letter value='' type='' />
-      <Letter value='' type='' />
-      <Letter value='' type='' />
+    <div className='flex gap-1.5'>
+      {value.split('').map((letter) => (
+        <Letter value={letter} type='bg-transparent' />
+      ))}
+      {[...Array(5 - value.length)].map((_) => (
+        <Letter value='' type='' />
+      ))}
     </div>
   );
 };

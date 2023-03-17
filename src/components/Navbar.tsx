@@ -2,8 +2,10 @@ import Word from './Word';
 
 const Navbar = () => {
   return (
-    <div className='py-5 justify-center w-screen'>
-      <div className='logo text-white text-center'>Wordle</div>
+    <div className='xl:py-5 py-2 justify-center w-screen'>
+      <div className='logo text-white text-center text-3xl xl:text-5xl'>
+        Wordle
+      </div>
     </div>
   );
 };
