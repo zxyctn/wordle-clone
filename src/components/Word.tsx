@@ -3,10 +3,10 @@ import Letter from "./Letter";
 
 const Word = ({ value, done, types }: WordPropsType) => {
   const typesClasses: KeyType = {
-    none: "bg-transparent border-neutral opacity-25",
-    default: "bg-transparent border-neutral",
-    matches: "bg-success border-success",
-    exists: "bg-warning border-warning",
+    none: "bg-transparent border-neutral opacity-25 dark:opacity-100",
+    default: "bg-transparent border-neutral dark:border-gray-300",
+    matches: "bg-success border-success dark:text-black",
+    exists: "bg-warning border-warning dark:text-black",
     nonexistent: "bg-neutral border-neutral text-white",
   };
 

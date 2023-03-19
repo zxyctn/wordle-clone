@@ -9,9 +9,10 @@ const Keyboard = ({ types }: KeyboardPropsType) => {
 
   const typesClasses: KeyType = {
     default:
-      "bg-opacity-20 text-black dark:text-white border-opacity-10 hover:bg-opacity-30 hover:border-opacity-20",
+      "bg-opacity-20 text-black dark:text-white dark:bg-white/50 dark:hover:bg-white/30 border-opacity-10 hover:bg-opacity-30 hover:border-opacity-20",
     exists: "btn-warning",
     matches: "btn-success",
+    nonexistent: "dark:text-white",
   };
 
   const handleClick = (letter: string) => {

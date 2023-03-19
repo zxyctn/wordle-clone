@@ -68,7 +68,7 @@ const App = () => {
               return items;
             });
             if (guesses.length === 5) {
-              toast(WORD, {
+              toast(WORD.toUpperCase(), {
                 autoClose: false,
                 position: "top-center",
                 hideProgressBar: true,
@@ -76,7 +76,12 @@ const App = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "dark",
+                bodyClassName: "text-center",
+                className: "w-max mx-auto",
+                closeButton: false,
+                theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+                  ? "light"
+                  : "dark",
               });
               setSolved((_) => true);
             }
@@ -89,7 +94,12 @@ const App = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "dark",
+              bodyClassName: "text-center",
+              className: "w-max mx-auto",
+              closeButton: false,
+              theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "light"
+                : "dark",
             });
           } else {
             toast("Not in word list", {
@@ -100,7 +110,12 @@ const App = () => {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "dark",
+              bodyClassName: "text-center",
+              className: "w-max mx-auto",
+              closeButton: false,
+              theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "light"
+                : "dark",
             });
           }
         } else if (key === "Backspace") {
