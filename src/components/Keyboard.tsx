@@ -1,4 +1,3 @@
-import React from "react";
 import { KeyboardPropsType, KeyType } from "../types";
 
 const Keyboard = ({ types }: KeyboardPropsType) => {
