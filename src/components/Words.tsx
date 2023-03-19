@@ -1,26 +1,27 @@
-import { getRandomWord } from '../shared';
-import Word from './Word';
+import { WordsPropsType } from "../types";
+import Word from "./Word";
 
-interface WordsProps {
-  value: string;
-}
-
-const Words = ({ value }: WordsProps) => {
-  const guesses: string[] = [];
-
-  const word = getRandomWord();
-
-  console.log(value);
+const Words = ({ value, guesses }: WordsPropsType) => {
+  const emptyTypes = ["default", "default", "default", "default", "default"];
+  const noneTypes = ["none", "none", "none", "none", "none"];
 
   return (
-    <div className='grid gap-1.5 place-content-center'>
-      {guesses.map((word, index) => (
-        <Word value={word} done={true} key={index + '-' + word} />
+    <div className="grid gap-1.5 place-content-center">
+      {guesses.map((guess, index) => (
+        <Word
+          value={guess.value}
+          types={guess.types}
+          done={true}
+          key={index + "-" + guess.value}
+        />
       ))}
-      <Word value={value} done={false} />
-      {[...Array(5 - guesses.length)].map((_, index) => (
-        <Word value='' done={false} key={index} />
-      ))}
+      {guesses.length < 6 && (
+        <Word value={value} types={emptyTypes} done={false} />
+      )}
+      {guesses.length < 6 &&
+        [...Array(5 - guesses.length)].map((_, index) => (
+          <Word value="" done={false} types={noneTypes} key={index} />
+        ))}
     </div>
   );
 };

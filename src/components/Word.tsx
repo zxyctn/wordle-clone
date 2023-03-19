@@ -1,33 +1,28 @@
-import Letter from './Letter';
+import { KeyType, WordPropsType } from "../types";
+import Letter from "./Letter";
 
-interface WordProps {
-  value: string;
-  done: boolean;
-}
-
-const Word = ({ value, done }: WordProps) => {
-  const types = {
-    none: {
-      bg: 'bg-transparent',
-      border: 'border-neutral',
-    },
-    default: {
-      bg: 'bg-transparent',
-      border: 'border-primary',
-    },
+const Word = ({ value, done, types }: WordPropsType) => {
+  const typesClasses: KeyType = {
+    none: "bg-transparent border-neutral opacity-25",
+    default: "bg-transparent border-neutral",
+    matches: "bg-success border-success",
+    exists: "bg-warning border-warning",
+    nonexistent: "bg-neutral border-neutral text-white",
   };
 
   return (
-    <div className='flex gap-1.5'>
-      {value.split('').map((letter, index) => (
-        <Letter
-          value={letter}
-          type={types.default}
-          key={`${letter}-${index}`}
-        />
-      ))}
+    <div className="flex gap-1.5">
+      {value.split("").map((letter, index) => {
+        return (
+          <Letter
+            value={letter}
+            type={typesClasses[types[index]]}
+            key={`${letter}-${index}`}
+          />
+        );
+      })}
       {[...Array(5 - value.length)].map((_, index) => (
-        <Letter value='' type={types.none} key={`empty-${index}`} />
+        <Letter value="" type={typesClasses.none} key={`empty-${index}`} />
       ))}
     </div>
   );

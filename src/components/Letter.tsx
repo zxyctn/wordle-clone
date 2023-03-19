@@ -1,17 +1,12 @@
-interface LetterProps {
-  value: string;
-  type: {
-    bg: string;
-    border: string;
-  };
-}
+import { LetterPropsType } from "../types";
 
-const Letter = ({ value, type }: LetterProps) => {
+
+const Letter = ({ value, type }: LetterPropsType) => {
   return (
     <div
-      className={`${type.bg} ${type.border} w-14 h-14 grid border-2 text-3xl font-bold`}
+      className={`${type} w-14 h-14 grid border-2 text-3xl font-bold`}
     >
-      <div className='mt-1.5 mx-auto'>{value}</div>
+      <div className="my-auto mx-auto">{value}</div>
     </div>
   );
 };

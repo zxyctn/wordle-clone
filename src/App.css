@@ -1,25 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap');
 
-.matches {
-  background-color: #538d4e;
-}
-
-.exists {
-  background-color: #b59f3b;
-}
-
-.none {
-  background-color: #3a3a3c;
-}
-
-.default {
-  background-color: #818384;
-}
-
-.bordered {
-  border: 1px solid #3a3a3c;
-}
-
 .logo {
   font-family: 'Arvo', serif;
 }
