@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 import Keyboard from "./components/Keyboard";
 import Navbar from "./components/Navbar";
 import Words from "./components/Words";
-import { getRandomWord, testGuess } from "./shared";
+import { getRandomWord, testGuess, customToast, isValid } from "./shared";
 import { GuessType, KeyType } from "./types";
-import words from "./words";
 
 const WORD = getRandomWord();
 
@@ -19,10 +18,6 @@ const keys: KeyType = {
 "QWERTYUIOPASDFGHJKLZXCVBNM"
   .split("")
   .forEach((letter) => (keys[letter] = "default"));
-
-const isValid = (guess: string) => {
-  return words.findIndex((item) => guess.toLowerCase() === item) !== -1;
-};
 
 const App = () => {
   const [input, setInput] = useState<string>("");
@@ -42,6 +37,7 @@ const App = () => {
           if (input.length === 5 && isValid(input)) {
             const types = testGuess(input.toLowerCase(), WORD);
             if (input.toLowerCase() === WORD) {
+              customToast(WORD.toUpperCase(), false);
               setSolved((_) => true);
             }
             input
@@ -68,55 +64,12 @@ const App = () => {
               return items;
             });
             if (guesses.length === 5) {
-              toast(WORD.toUpperCase(), {
-                autoClose: false,
-                position: "top-center",
-                hideProgressBar: true,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                bodyClassName: "text-center",
-                className: "w-max mx-auto",
-                closeButton: false,
-                theme: window.matchMedia("(prefers-color-scheme: dark)").matches
-                  ? "light"
-                  : "dark",
-              });
               setSolved((_) => true);
             }
           } else if (input.length < 5) {
-            toast("Not enough letters", {
-              position: "top-center",
-              autoClose: 500,
-              hideProgressBar: true,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              bodyClassName: "text-center",
-              className: "w-max mx-auto",
-              closeButton: false,
-              theme: window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "light"
-                : "dark",
-            });
+            customToast("Not enough letters");
           } else {
-            toast("Not in word list", {
-              position: "top-center",
-              autoClose: 500,
-              hideProgressBar: true,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              bodyClassName: "text-center",
-              className: "w-max mx-auto",
-              closeButton: false,
-              theme: window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "light"
-                : "dark",
-            });
+            customToast("Not in word list");
           }
         } else if (key === "Backspace") {
           setInput((value) => value.slice(0, -1));

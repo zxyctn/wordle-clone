@@ -46,7 +46,7 @@ const Keyboard = ({ types }: KeyboardPropsType) => {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  className="bi bi-arrow-return-left"
+                  className="stroke-1 stroke-white"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -60,7 +60,7 @@ const Keyboard = ({ types }: KeyboardPropsType) => {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  className="bi bi-arrow-left"
+                  className="stroke-1 stroke-white"
                   viewBox="0 0 16 16"
                 >
                   <path
