@@ -5,7 +5,7 @@ const NavbarWord = ({ value, type }: LetterPropsType) => {
     <div className="absolute flex gap-0.5 right-0 -bottom-4">
       {value.split("").map((letter) => {
         return (
-            <div
+          <div
             key={`${letter}-navbar`}
             className={`${type} w-5 h-5 grid border-2 text-xs font-bold`}
           >

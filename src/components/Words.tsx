@@ -1,4 +1,6 @@
 import { WordsPropsType } from "../types";
+import Navbar from "./Navbar";
+import ThemeToggler from "./ThemeToggler";
 import Word from "./Word";
 
 const Words = ({ value, guesses }: WordsPropsType) => {
@@ -7,6 +9,11 @@ const Words = ({ value, guesses }: WordsPropsType) => {
 
   return (
     <div className="grid gap-1.5 place-content-center">
+      <div className="flex justify-between">
+        <Navbar />
+        <ThemeToggler />
+      </div>
+
       {guesses.map((guess, index) => (
         <Word
           value={guess.value}

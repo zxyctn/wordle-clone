@@ -4,16 +4,18 @@ module.exports = {
   theme: {
     extend: {},
   },
+  darkMode: 'class',
   plugins: [require('daisyui')],
   daisyui: {
-    themes: [
-      'light',
-      {
-        dark: {
-          ...require('daisyui/src/colors/themes')['[data-theme=dracula]'],
-          '--rounded-btn': '0.35rem', // border radius rounded-btn utility class, used in buttons and similar element
-        },
+    themes: [{
+      dark: {
+        ...require('daisyui/src/colors/themes')['[data-theme=dracula]'],
+        '--rounded-btn': '0.35rem',
       },
-    ],
+      light: {
+        ...require('daisyui/src/colors/themes')['[data-theme=light]'],
+        '--rounded-btn': '0.35rem',
+      }
+    }, ],
   },
 };

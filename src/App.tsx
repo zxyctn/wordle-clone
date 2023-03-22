@@ -97,7 +97,7 @@ const App = () => {
         draggable
         pauseOnHover
       />
-      <Navbar />
+      
       <Words value={input} guesses={guesses} />
       <Keyboard types={keys} />
     </div>
