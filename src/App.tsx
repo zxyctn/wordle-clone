@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 import Keyboard from "./components/Keyboard";
-import Navbar from "./components/Navbar";
 import Words from "./components/Words";
 import { getRandomWord, testGuess, customToast, isValid } from "./shared";
 import { GuessType, KeyType } from "./types";
@@ -36,9 +35,9 @@ const App = () => {
         } else if (key === "Enter") {
           if (input.length === 5 && isValid(input)) {
             const types = testGuess(input.toLowerCase(), WORD);
-            if (input.toLowerCase() === WORD) {
+            if (input.toLowerCase() === WORD || guesses.length === 5) {
               customToast(WORD.toUpperCase(), false);
-              setSolved((_) => true);
+              setSolved(() => true);
             }
             input
               .toUpperCase()
@@ -63,9 +62,6 @@ const App = () => {
               setInput((_) => "");
               return items;
             });
-            if (guesses.length === 5) {
-              setSolved((_) => true);
-            }
           } else if (input.length < 5) {
             customToast("Not enough letters");
           } else {
@@ -97,7 +93,7 @@ const App = () => {
         draggable
         pauseOnHover
       />
-      
+
       <Words value={input} guesses={guesses} />
       <Keyboard types={keys} />
     </div>

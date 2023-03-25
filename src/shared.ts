@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { Theme, toast } from "react-toastify";
 
 import words from "./words";
 
@@ -24,8 +24,10 @@ export const isValid = (guess: string) => {
   return words.findIndex((item) => guess.toLowerCase() === item) !== -1;
 };
 
-export const customToast = (value: string, autoClose:number|false=500) =>
-  toast(value, {
+export const customToast = (value: string, autoClose: number | false = 500) => {
+  const theme = localStorage.getItem("theme");
+
+  return toast(value, {
     autoClose: autoClose,
     position: "top-center",
     hideProgressBar: true,
@@ -36,7 +38,6 @@ export const customToast = (value: string, autoClose:number|false=500) =>
     bodyClassName: "text-center",
     className: "w-max mx-auto",
     closeButton: false,
-    theme: window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "light"
-      : "dark",
+    theme: (theme as Theme) === "light" ? "dark" : "light",
   });
+};
