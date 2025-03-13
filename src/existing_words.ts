@@ -1,4 +1,4 @@
-const words: string[] = [
+const existing_words: string[] = [
   'rossa',
   'jetty',
   'wizzo',
