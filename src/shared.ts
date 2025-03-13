@@ -1,7 +1,6 @@
 import { Theme, toast } from "react-toastify";
 
-import game_words from "./game_words";
-import dictionary from "./existing_words";
+import { game_words, existing_words } from "./words";
 
 export const getRandomWord = () =>
   game_words[Math.floor(Math.random() * game_words.length)];
@@ -22,7 +21,7 @@ export const testGuess = (guess: string, word: string) => {
 };
 
 export const isValid = (guess: string) => {
-  return dictionary.findIndex((item) => guess.toLowerCase() === item) !== -1;
+  return existing_words.findIndex((item) => guess.toLowerCase() === item) !== -1;
 };
 
 export const customToast = (value: string, autoClose: number | false = 500) => {
